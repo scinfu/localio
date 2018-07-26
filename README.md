@@ -26,7 +26,7 @@ In your Locfile directory you can then execute
 localize
 ````
 
-and your localizable files will be created with the parameters specified in the Locfile. 
+and your localizable files will be created with the parameters specified in the Locfile.
 
 You can also specify in the first parameter a file with another name, and it will work as well.
 
@@ -36,7 +36,7 @@ You will need a little spreadsheet with all the localization literals and their 
 
 There is a basic example in this Google Drive link: [https://docs.google.com/spreadsheet/ccc?key=0AmX_w4-5HkOgdFFoZ19iSUlRSERnQTJ4NVZiblo2UXc&usp=sharing](https://docs.google.com/spreadsheet/ccc?key=0AmX_w4-5HkOgdFFoZ19iSUlRSERnQTJ4NVZiblo2UXc&usp=sharing). You just have to duplicate and save to your account, or download and save it as XLS file.
 
-**NOTE** Localio will only search for translations on the first worksheet of the spreadsheet. 
+**NOTE** Localio will only search for translations on the first worksheet of the spreadsheet.
 
 ### Locfile
 
@@ -87,13 +87,22 @@ platform :ios, :create_constants => false
 # ... rest of your Locfile ...
 ````
 
+We can skip generating keys for empty values with `:generate_empty_values => false`.  By default, if omitted, keys wioutll be always created regardless of value.
+
+Example:
+
+````ruby
+platform :ios, :generate_empty_values => false
+# ... rest of your Locfile ...
+````
+
 ##### ResX - :resx
 
 The default resource file name is `Resources.resx`. We can set a different base name using the `:resource_file` option.
 
 ````ruby
 # Generate WebResources.resx, WebResources.es.resx, etc.
-platform :resx, :resource_file => "WebResources" 
+platform :resx, :resource_file => "WebResources"
 
 # ... rest of your Locfile ...
 ````
