@@ -92,7 +92,7 @@ platform :ios, :create_constants => false
 # ... rest of your Locfile ...
 ````
 
-We can skip generating keys for empty values with `:generate_empty_values => false`.  By default, if omitted, keys wioutll be always created regardless of value.
+We can skip generating keys for empty values with `:generate_empty_values => false`.  By default, if omitted, keys will be always created regardless of value.
 
 Example:
 
