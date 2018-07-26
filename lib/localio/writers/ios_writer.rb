@@ -7,6 +7,7 @@ class IosWriter
   def self.write(languages, terms, path, formatter, options)
     puts 'Writing iOS translations...'
     create_constants = options[:create_constants].nil? ? true : options[:create_constants]
+    generate_empty_values = options[:generate_empty_values].nil? ? true : options[:generate_empty_values]
 
     constant_segments = nil
     languages.keys.each do |lang|
@@ -21,7 +22,7 @@ class IosWriter
         translation = term.values[lang]
         segment = Segment.new(key, translation, lang)
         segment.key = nil if term.is_comment?
-        segments.segments << segment
+        segments.segments << segment unless !generate_empty_values && translation.blank?
 
         unless term.is_comment?
           constant_key = ios_constant_formatter term.keyword
