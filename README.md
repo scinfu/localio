@@ -96,6 +96,26 @@ platform :ios, :generate_empty_values => false
 # ... rest of your Locfile ...
 ````
 
+We can apply regex replacements to values in sheets with `:regex_replace => [[string_or_regex_match, replace_value_string]]`, replacements will be applied in order. This is using Ruby `gsub` so regexes are supported as well as first param.
+
+Example (replaces placeholders):
+
+````ruby
+platform :ios, :regex_replace => [[/%(\d+)\$s/, '%\1$@']]
+# ... rest of your Locfile ...
+````
+
+##### Android - :android
+
+We can apply regex replacements to values in sheets with `:regex_replace => [[string_or_regex_match, replace_value_string]]`, replacements will be applied in order. This is using Ruby `gsub` so regexes are supported as well as first param.
+
+Example (replaces ' with \' and & with &amp;):
+
+````ruby
+platform :android, :regex_replace => [["'", "\\\\'"], ["&", "&amp;"]]
+# ... rest of your Locfile ...
+````
+
 ##### ResX - :resx
 
 The default resource file name is `Resources.resx`. We can set a different base name using the `:resource_file` option.

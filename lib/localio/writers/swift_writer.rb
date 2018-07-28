@@ -8,6 +8,7 @@ class SwiftWriter
     puts 'Writing iOS translations...'
     create_constants = options[:create_constants].nil? ? true : options[:create_constants]
     generate_empty_values = options[:generate_empty_values].nil? ? true : options[:generate_empty_values]
+    regex_replaces = options[:regex_replace].nil? ? [] : options[:regex_replace]
 
     constant_segments = nil
     languages.keys.each do |lang|
@@ -20,6 +21,13 @@ class SwiftWriter
       terms.each do |term|
         key = Formatter.format(term.keyword, formatter, method(:swift_key_formatter))
         translation = term.values[lang]
+
+        # Iterate trough regex replacements and apply them to translation
+        regex_replaces.each do |replace|
+          raise ArgumentError, "Regex replace #{replace.inspect}" unless replace.length == 2
+          translation.gsub! replace[0], replace[1]
+        end
+
         segment = Segment.new(key, translation, lang)
         segment.key = nil if term.is_comment?
         segments.segments << segment unless !generate_empty_values && translation.empty?
