@@ -1,3 +1,15 @@
+This is a fork of [mrmans0n/localio](https://github.com/mrmans0n/localio) which appears to be dead :(
+
+New features:
+
+| Version   | Feature   |
+|---        |---        |
+|0.1.7      |`:generate_empty_values` for :ios and :swift    |
+|           |`:regex_replace` for :ios, :swift, :android   |
+|           |Dockerfile and instructions for using without Ruby installed |
+
+---
+
 # Localio
 
 Localio generates automatically localizable files for many platforms like Rails, Android, iOS, Java .properties files and JSON files using a centralized spreadsheet as source. The spreadsheet can be in Google Drive or a simple local Excel file.
@@ -292,6 +304,39 @@ For example, if we wanted to override the default (english) and use spanish inst
 platform :android, :override_default => 'es'
 ```
 
-## Contributing
+## How to use in docker
 
-Please read the [contributing guide](https://github.com/mrmans0n/localio/blob/master/CONTRIBUTING.md).
+### Prerequisites:
+
+1. Install docker (https://www.docker.com/get-docker)
+2. Download Dockerfile
+
+```bash
+wget https://raw.githubusercontent.com/perix4/localio/master/Dockerfile
+```
+
+3. Build image (in the folder where Dockerfile is)
+
+```bash
+   docker build -t localio .
+```
+
+### How to localize:
+
+1. Run localize
+
+```bash
+     docker run -it --rm -v /${PWD}:/home localio localize
+```
+
+2. Change permissions of the /out file with:
+
+```bash
+     sudo chown -R $(whoami) out/
+```
+
+### How to remove image (to install new version):
+
+```bash
+docker image rm localio
+```
