@@ -101,7 +101,7 @@ We can apply regex replacements to values in sheets with `:regex_replace => [[st
 Example (replaces placeholders):
 
 ````ruby
-platform :ios, :regex_replace => [[/%(\d+)\$s/, "%$1\$@"]]
+platform :ios, :regex_replace => [[/%(\d+)\$s/, '%\1$@']]
 # ... rest of your Locfile ...
 ````
 
