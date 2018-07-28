@@ -21,7 +21,7 @@ RUN apk add --no-cache \
   libxslt-dev \
   git \
   bash
-RUN git clone --depth 1 -b master https://github.com/perix4/localio.git
+RUN git clone --depth 1 ---branch 0.1.7 https://github.com/perix4/localio.git
 RUN cd localio \
     && gem build localio.gemspec \
     && gem install ./localio-0.1.7.gem
