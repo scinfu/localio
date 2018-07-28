@@ -6,7 +6,7 @@ New features:
 |---        |---        |
 |0.1.7      |`:generate_empty_values` for :ios and :swift    |
 |           |`:regex_replace` for :ios, :swift, :android   |
-|           |Dockerfile and instructions for using without Ruby installed |
+|           |Dockerfile and [instructions](https://github.com/perix4/localio#how-to-use-in-docker) for using without Ruby installed |
 
 ---
 
