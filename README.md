@@ -172,6 +172,8 @@ Option                      | Description
 `:password`                 | **DEPRECATED** This is deprecated starting version 0.1.0. Please remove it.
 `:client_id`                | (Req.) Your Google CLIENT ID.
 `:client_secret`            | (Req.) Your Google CLIENT SECRET.
+`:worksheet_index`          | (Optional, defaults to 0) Index of the worksheet containing the translations.
+
 
 Please take into account that from version 0.1.0 of Localio onwards we are using **Google OAuth2 authentication**, as the previous one with login/password has been deprecated by Google and cannot be access anymore starting April 20th 2015.
 
