@@ -4,7 +4,7 @@ New features:
 
 | Version   | Feature   |
 |---        |---        |
-|0.1.8      |`:po` gettext writer implementation             |
+|0.1.8      |`:po` gettext writer implementation for Elixir            |
 |0.1.7      |`:generate_empty_values` for :ios and :swift    |
 |           |`:regex_replace` for :ios, :swift, :android     |
 |           |Dockerfile and [instructions](https://github.com/perix4/localio#how-to-use-in-docker) for using without Ruby installed |
@@ -141,9 +141,9 @@ platform :resx, :resource_file => "WebResources"
 # ... rest of your Locfile ...
 ````
 
-##### Gettext .po - :po
+##### Gettext .po for Elixir - :po
 
-The default resource file name is `default.po`. We can set a different base name using the `:resource_file` option.
+Only generates .po file (no .pot file included). Default resource file name is `default`. We can set a different base name using the `:resource_file` option. Files are generated in default folder structure for Elixir's [Gettext](https://github.com/elixir-lang/gettext) - `:language/LC_MESSAGES/:resource_file.po`
 
 ````ruby
 platform :po, :resource_file => "default"
