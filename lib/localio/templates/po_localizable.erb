@@ -1,0 +1,8 @@
+<% @segments.each do |term|
+  if term.is_comment? %>#: <%= term.translation %>
+<% else %>msgid "<%= term.key %>"
+msgstr "<%= term.translation %>"
+
+<% end
+  end
+%>
