@@ -4,7 +4,8 @@ New features:
 
 | Version   | Feature   |
 |---        |---        |
-|0.1.8      |`:po` gettext writer implementation for Elixir            |
+|0.1.8      |`:po` gettext writer implementation for Elixir  |
+|           |`:workshee_index` option for `source :google_drive` |
 |0.1.7      |`:generate_empty_values` for :ios and :swift    |
 |           |`:regex_replace` for :ios, :swift, :android     |
 |           |Dockerfile and [instructions](https://github.com/perix4/localio#how-to-use-in-docker) for using without Ruby installed |
@@ -166,6 +167,8 @@ Option                      | Description
 `:password`                 | **DEPRECATED** This is deprecated starting version 0.1.0. Please remove it.
 `:client_id`                | (Req.) Your Google CLIENT ID.
 `:client_secret`            | (Req.) Your Google CLIENT SECRET.
+`:worksheet_index`          | (Optional, defaults to 0) Index of the worksheet containing the translations.
+
 
 Please take into account that from version 0.1.0 of Localio onwards we are using **Google OAuth2 authentication**, as the previous one with login/password has been deprecated by Google and cannot be access anymore starting April 20th 2015.
 

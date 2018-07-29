@@ -90,9 +90,9 @@ class GoogleDriveProcessor
         abort "More than one match found (#{matching_spreadsheets.join ', '}). You have to be more specific!"
     end
 
+    worksheet_index = options[:worksheet_index].nil? ? 0 : options[:worksheet_index]
 
-    # TODO we could pass a :page_index in the options hash and get that worksheet instead, defaulting to zero?
-    worksheet = matching_spreadsheets[0].worksheets[0]
+    worksheet = matching_spreadsheets[0].worksheets[worksheet_index]
     raise 'Unable to retrieve the first worksheet from the spreadsheet. Are there any pages?' if worksheet.nil?
 
     # At this point we have the worksheet, so we want to store all the key / values
