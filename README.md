@@ -4,15 +4,16 @@ New features:
 
 | Version   | Feature   |
 |---        |---        |
+|0.1.8      |`:po` gettext writer implementation             |
 |0.1.7      |`:generate_empty_values` for :ios and :swift    |
-|           |`:regex_replace` for :ios, :swift, :android   |
+|           |`:regex_replace` for :ios, :swift, :android     |
 |           |Dockerfile and [instructions](https://github.com/perix4/localio#how-to-use-in-docker) for using without Ruby installed |
 
 ---
 
 # Localio
 
-Localio generates automatically localizable files for many platforms like Rails, Android, iOS, Java .properties files and JSON files using a centralized spreadsheet as source. The spreadsheet can be in Google Drive or a simple local Excel file.
+Localio generates automatically localizable files for many platforms like Rails, Android, iOS, Java .properties files, JSON files, ResX files, .po files using a centralized spreadsheet as source. The spreadsheet can be in Google Drive or a simple local Excel file.
 
 ## Installation
 
@@ -85,6 +86,7 @@ Option                      | Description                                       
 * `:json` for an easy JSON format for localizables. The `output_path` is yours to decide :)
 * `:java_properties` for .properties files used mainly in Java. Files named language_(lang).properties will be generated in `output_path`'s root directory.
 * `:resx` for .resx files used by .NET projects, e.g. Windows Forms, Windows Phone or Xamarin.
+* `:po` for .po files used by gettext, spec: http://pology.nedohodnik.net/doc/user/en_US/ch-poformat.html -> done for usage in Elixir
 
 #### Extra platform parameters
 
@@ -135,6 +137,16 @@ The default resource file name is `Resources.resx`. We can set a different base 
 ````ruby
 # Generate WebResources.resx, WebResources.es.resx, etc.
 platform :resx, :resource_file => "WebResources"
+
+# ... rest of your Locfile ...
+````
+
+##### Gettext .po - :po
+
+The default resource file name is `default.po`. We can set a different base name using the `:resource_file` option.
+
+````ruby
+platform :po, :resource_file => "default"
 
 # ... rest of your Locfile ...
 ````
@@ -267,6 +279,7 @@ Platform             | "App name"   | "ANOTHER_KIND_OF_KEY"
 `:smart` (ruby)      | `app_name`   | `another_kind_of_key`
 `:smart` (json)      | `app_name`   | `another_kind_of_key`
 `:smart` (resx)      | `AppName`    | `AnotherKindOfKey`
+`:smart` (po)        | `App name`   | `Another kind of key` (as is)
 
 Example of use:
 
