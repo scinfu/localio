@@ -33,10 +33,7 @@ class GoogleDriveProcessor
       auth = client.authorization
       auth.client_id = client_id
       auth.client_secret = client_secret
-      auth.scope =
-          "https://docs.google.com/feeds/" +
-              "https://www.googleapis.com/auth/drive " +
-              "https://spreadsheets.google.com/feeds/"
+      auth.scope = "https://www.googleapis.com/auth/drive"
       auth.redirect_uri = "urn:ietf:wg:oauth:2.0:oob"
 
       config = ConfigStore.new
