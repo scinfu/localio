@@ -67,7 +67,7 @@ class GoogleDriveProcessor
     end
 
       # Creates a session
-      session = GoogleDrive.login_with_oauth(access_token)
+      session = GoogleDrive.login_with_oauth(client)
     rescue => e
       puts "Error: #{e.inspect}"
       raise 'Couldn\'t access Google Drive. Check your values for :client_id and :client_secret, and delete :access_token if present (you might need to refresh its value so please remove it)'
