@@ -88,12 +88,7 @@ class GoogleDriveProcessor
         abort "More than one match found (#{matching_spreadsheets.join ', '}). You have to be more specific!"
     end
 
-    sheet = options[:sheet]
-    worksheet = if sheet.is_a? Integer
-                  matching_spreadsheets[0].worksheets[sheet]
-                elsif sheet.is_a? String
-                  matching_spreadsheets[0].worksheets.detect { |s| s.title == sheet }
-                end
+    worksheet = matching_spreadsheets[0].worksheets[1]
 
 
     raise 'Unable to retrieve the first worksheet from the spreadsheet. Are there any pages?' if worksheet.nil?
