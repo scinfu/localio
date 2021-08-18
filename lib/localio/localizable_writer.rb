@@ -10,8 +10,6 @@ require 'localio/writers/po_writer'
 module LocalizableWriter
   def self.write(platform, languages, terms, path, formatter, options)
     case platform
-      when :android
-        AndroidWriter.write languages, terms, path, formatter, options
       when :ios
         IosWriter.write languages, terms, path, formatter, options
       when :swift
