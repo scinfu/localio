@@ -29,7 +29,11 @@ class GoogleDriveProcessor
     # Log in and get spreadsheet
     puts 'Logging in to Google Drive...'
     begin
-      client = ::Google::APIClient.new application_name: 'Localio', application_version: Localio::VERSION, user_agent: 'Localio/1.0'
+      client = Google::APIClient.new application_name: 'Localio', application_version: Localio::VERSION, user_agent: 'Localio/1.0'
+
+      puts '#{client.methods()}'
+
+
 
       auth = client.authorization
       auth.client_id = client_id
