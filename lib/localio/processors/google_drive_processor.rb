@@ -90,6 +90,8 @@ class GoogleDriveProcessor
 
     puts 'here 1'
 
+    puts "length() method form : #{matching_spreadsheets.length()}"
+
     worksheet = matching_spreadsheets[0].worksheets[1]
 
     puts 'here 2'
