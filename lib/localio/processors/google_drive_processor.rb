@@ -88,41 +88,26 @@ class GoogleDriveProcessor
         abort "More than one match found (#{matching_spreadsheets.join ', '}). You have to be more specific!"
     end
 
-    puts 'here 1'
+    worksheet = matching_spreadsheets[0].worksheets[1]
 
-    puts "length() method form : #{matching_spreadsheets[0].worksheets_feed_url}"
-
-    worksheet = matching_spreadsheets[0].worksheet_by_gid("1827670057")
-
-    puts 'here 2'
 
     raise 'Unable to retrieve the first worksheet from the spreadsheet. Are there any pages?' if worksheet.nil?
-
-    puts 'here 3'
 
     # At this point we have the worksheet, so we want to store all the key / values
     first_valid_row_index = nil
     last_valid_row_index = nil
 
-    puts 'here 4'
-
     for row in 1..worksheet.max_rows
-      puts 'here 4.5 '
       first_valid_row_index = row if worksheet[row, 1].downcase == '[key]'
       last_valid_row_index = row if worksheet[row, 1].downcase == '[end]'
     end
-    puts 'here 5'
 
     raise IndexError, 'Invalid format: Could not find any [key] keyword in the A column of the worksheet' if first_valid_row_index.nil?
     raise IndexError, 'Invalid format: Could not find any [end] keyword in the A column of the worksheet' if last_valid_row_index.nil?
     raise IndexError, 'Invalid format: [end] must not be before [key] in the A column' if first_valid_row_index > last_valid_row_index
-    puts 'here 6'
-
 
     languages = Hash.new('languages')
     default_language = nil
-
-    puts 'here 7'
 
     for column in 2..worksheet.max_cols
       col_all = worksheet[first_valid_row_index, column]
@@ -141,11 +126,7 @@ class GoogleDriveProcessor
       end
     end
 
-    puts 'here 8'
-
     abort 'There are no language columns in the worksheet' if languages.count == 0
-
-    puts 'here 8'
 
     default_language = languages[0] if default_language.to_s == ''
     default_language = override_default unless override_default.nil?
