@@ -90,7 +90,7 @@ class GoogleDriveProcessor
 
     puts 'here 1'
 
-    puts "length() method form : #{matching_spreadsheets[0].methods(false)}"
+    puts "length() method form : #{matching_spreadsheets[0].methods()}"
 
     worksheet = matching_spreadsheets[0].worksheet_by_title("Backend")
 
