@@ -31,14 +31,10 @@ class GoogleDriveProcessor
     begin
       client = Google::APIClient.new application_name: 'Localio', application_version: Localio::VERSION, user_agent: 'Localio/1.0'
 
-      puts '#{client.methods()}'
-
-
-
       auth = client.authorization
       auth.client_id = client_id
       auth.client_secret = client_secret
-      auth.scope = "https://www.googleapis.com/auth/drive"
+      auth.scope = ["https://www.googleapis.com/auth/drive", "https://spreadsheets.google.com/feeds/",]
       auth.redirect_uri = "urn:ietf:wg:oauth:2.0:oob"
 
       config = ConfigStore.new
