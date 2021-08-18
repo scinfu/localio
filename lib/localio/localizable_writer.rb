@@ -1,4 +1,3 @@
-require 'localio/writers/android_writer'
 require 'localio/writers/ios_writer'
 require 'localio/writers/swift_writer'
 require 'localio/writers/json_writer'
