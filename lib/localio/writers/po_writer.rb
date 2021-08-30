@@ -25,7 +25,7 @@ class PoWriter
         puts 'there at 2'
         translation = term.values[lang]
 #         translation = term.values[lang].gsub(/\n/, '\n')
-        puts 'there at 3'
+        puts 'there at 3 ' + lang ' and ' + translation
         segment = Segment.new(key, translation, lang)
         puts 'there at 4'
         segment.key = nil if term.is_comment?
