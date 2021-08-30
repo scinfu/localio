@@ -23,7 +23,8 @@ class PoWriter
         puts 'there at 1'
         key = Formatter.format(term.keyword, formatter, method(:po_key_formatter))
         puts 'there at 2'
-        translation = term.values[lang].gsub(/\n/, '\n')
+        translation = term.values[lang]
+#         translation = term.values[lang].gsub(/\n/, '\n')
         puts 'there at 3'
         segment = Segment.new(key, translation, lang)
         puts 'there at 4'
