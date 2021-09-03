@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email = ["nacho@nlopez.io"]
   spec.description = %q{Automatic Localizable file generation for multiple platforms (Rails YAML, Android, Java Properties, iOS, JSON, .NET ResX)}
   spec.summary = %q{Automatic Localizable file generation for multiple type of files, like Android string.xml, Xcode Localizable.strings, JSON files, Rails YAML files, Java properties, etc. reading from Google Drive and Excel spreadsheets as base.}
-  spec.homepage = "http://github.com/mrmans0n/localio"
+  spec.homepage = "http://github.com/scinfu/localio"
   spec.license = "MIT"
 
   spec.files = `git ls-files`.split($/)
