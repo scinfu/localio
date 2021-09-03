@@ -21,6 +21,8 @@ module LocalizableWriter
         JavaPropertiesWriter.write languages, terms, path, formatter, options
       when :resx
         ResXWriter.write languages, terms, path, formatter, options
+       when :android
+        AndroidWriter.write languages, terms, path, formatter, options
       when :po
         PoWriter.write languages, terms, path, formatter, options
       else
