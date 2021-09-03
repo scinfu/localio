@@ -6,7 +6,12 @@ class Segment
 
   def initialize(key, translation, language)
     @key = key
-    @translation = translation.replace_escaped
+
+    if translation.respond_to?(:replace_escaped)
+        @translation = translation.replace_escaped
+    else
+        @translation = translation
+    end
     @language = language
   end
 
