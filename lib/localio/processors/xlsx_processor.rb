@@ -27,19 +27,19 @@ class XlsxProcessor
     # At this point we have the worksheet, so we want to store all the key / values
     first_valid_row_index = nil
     last_valid_row_index = nil
-        
+
     for row in 1..worksheet.rows.count-1
       first_valid_row_index = row if worksheet.rows[row][0].to_s.downcase == '[key]'
       last_valid_row_index = row if worksheet.rows[row][0].to_s.downcase == '[end]'
     end
-    
+
     raise IndexError, 'Invalid format: Could not find any [key] keyword in the A column of the worksheet' if first_valid_row_index.nil?
     raise IndexError, 'Invalid format: Could not find any [end] keyword in the A column of the worksheet' if last_valid_row_index.nil?
     raise IndexError, 'Invalid format: [end] must not be before [key] in the A column' if first_valid_row_index > last_valid_row_index
 
     languages = Hash.new('languages')
     default_language = nil
-    
+
     for column in 1..worksheet.rows[first_valid_row_index].count-1
       col_all = worksheet.rows[first_valid_row_index][column].to_s
       col_all.each_line(' ') do |col_text|
@@ -47,6 +47,7 @@ class XlsxProcessor
         lang = col_text.gsub('*', '')
 
         unless platform_options[:avoid_lang_downcase]
+          raise IndexError, 'Invalid format: no default language, try to add * to a language es: en*' if default_language.nil?
           default_language = default_language.downcase
           lang = lang.downcase
          end
@@ -56,7 +57,7 @@ class XlsxProcessor
         end
       end
     end
-    
+
     raise 'There are no language columns in the worksheet' if languages.count == 0
 
     default_language = languages[0] if default_language.to_s == ''

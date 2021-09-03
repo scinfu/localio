@@ -6,6 +6,6 @@ require 'localio'
 begin
   Localio.from_cmdline(ARGV)
 rescue => e
-  abort e.message
+  abort (["#{self.class} - #{e.class}: #{e.message}"]+e.backtrace).join("\n")
 end
 
