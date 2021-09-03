@@ -1,3 +1,5 @@
+require 'localio/string_helper'
+
 class Segment
 
   attr_accessor :key, :translation, :language
@@ -10,11 +12,5 @@ class Segment
 
   def is_comment?
     @key == nil
-  end
-end
-
-class String
-  def replace_escaped
-    self.gsub("`+", "+").gsub("`=","=").gsub("\\+", "+").gsub("\\=","=")
   end
 end
