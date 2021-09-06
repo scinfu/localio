@@ -8,6 +8,16 @@ require 'localio/writers/po_writer'
 
 module LocalizableWriter
   def self.write(platform, languages, terms, path, formatter, options)
+
+    ignore_languages = options[:ignore_languages]
+
+    if ignore_languages && !ignore_languages.nil?
+        ignore_languages_arr = ignore_languages.split(",")
+        ignore_languages_arr.each do |lang|
+            languages.delete(lang)
+        end
+    end
+
     case platform
       when :ios
         IosWriter.write languages, terms, path, formatter, options

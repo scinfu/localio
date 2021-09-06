@@ -77,6 +77,8 @@ Option                      | Description                                       
 `formatting`                | The formatter that will be used for key processing.              | `smart`
 `except`                    | Filter applied to the keys, process all except the matches.      | `nil`
 `only`                      | Filter applied to the keys, only process the matches.            | `nil`
+`ignore_languages` | Ignore  languages           | `nil` es: `platform :android, :ignore_languages => "xx,he"`
+
 
 #### Supported platforms
 
