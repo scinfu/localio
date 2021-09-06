@@ -99,7 +99,7 @@ class AndroidWriter
 
   def self.android_parsing(term)
     if !term.nil? && term.respond_to?(:gsub)
-        term.gsub('& ','&amp; ').gsub('...', '…').gsub('%@', '%s')
+        term.gsub('&','&amp;').gsub('...', '…').gsub('%@', '%s')
     end
   end
 end
