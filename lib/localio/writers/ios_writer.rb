@@ -9,6 +9,7 @@ class IosWriter
     create_constants = options[:create_constants].nil? ? true : options[:create_constants]
     generate_empty_values = options[:generate_empty_values].nil? ? true : options[:generate_empty_values]
     regex_replaces = options[:regex_replace].nil? ? [] : options[:regex_replace]
+    file_name = options[:file_name].nil? ? 'Localizable' : options[:file_name]
 
     constant_segments = nil
     languages.keys.each do |lang|
@@ -40,7 +41,7 @@ class IosWriter
         end
       end
 
-      TemplateHandler.process_template 'ios_localizable.erb', output_path, 'Localizable.strings', segments
+      TemplateHandler.process_template 'ios_localizable.erb', output_path, file_name+'.strings', segments
       puts " > #{lang.yellow}"
     end
 
