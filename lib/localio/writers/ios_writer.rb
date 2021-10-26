@@ -69,6 +69,7 @@ class AndroidWriter
   def self.write(languages, terms, path, formatter, options)
     puts 'Writing Android translations...'
     default_language = options[:default_language]
+    regex_replaces = options[:regex_replace].nil? ? [] : options[:regex_replace]
     file_name = options[:file_name].nil? ? 'strings' : options[:file_name]
 
     languages.keys.each do |lang|
