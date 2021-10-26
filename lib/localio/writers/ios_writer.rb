@@ -81,7 +81,8 @@ class AndroidWriter
       segments = SegmentsListHolder.new lang
       terms.each do |term|
         key = Formatter.format(term.keyword, formatter, method(:android_key_formatter))
-        translation = android_parsing term.values[lang]
+#       translation = android_parsing term.values[lang]
+        translation = term.values[lang]
 
         # Iterate trough regex replacements and apply them to translation
         regex_replaces.each do |replace|
@@ -106,9 +107,9 @@ class AndroidWriter
     key.space_to_underscore.strip_tag.downcase
   end
 
-  def self.android_parsing(term)
-    if !term.nil? && term.respond_to?(:gsub)
-        term.gsub('&','&amp;').gsub('...', '…').gsub('%@', '%s')
-    end
-  end
+#   def self.android_parsing(term)
+#     if !term.nil? && term.respond_to?(:gsub)
+#         term.gsub('&','&amp;').gsub('...', '…').gsub('%@', '%s')
+#     end
+#   end
 end
