@@ -25,8 +25,10 @@ class IosWriter
 
         # Iterate trough regex replacements and apply them to translation
         regex_replaces.each do |replace|
-          raise ArgumentError, "Regex replace #{replace.inspect}" unless replace.length == 2
-          translation.gsub! replace[0], replace[1]
+            raise ArgumentError, "Regex replace #{replace.inspect}" unless replace.length == 2
+            if !translation.nil? && translation.respond_to?(:gsub)
+                translation = translation.gsub replace[0], replace[1]
+            end
         end
 
         segment = Segment.new(key, translation, lang)
@@ -88,9 +90,10 @@ class AndroidWriter
         regex_replaces.each do |replace|
             raise ArgumentError, "Regex replace #{replace.inspect}" unless replace.length == 2
             if !translation.nil? && translation.respond_to?(:gsub)
-                translation.gsub! replace[0], replace[1]
+                translation = translation.gsub replace[0], replace[1]
             end
         end
+
 
         segment = Segment.new(key, translation, lang)
         segment.key = nil if term.is_comment?

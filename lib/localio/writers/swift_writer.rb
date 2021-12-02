@@ -22,10 +22,12 @@ class SwiftWriter
         key = Formatter.format(term.keyword, formatter, method(:swift_key_formatter))
         translation = term.values[lang]
 
-        # Iterate trough regex replacements and apply them to translation
+# Iterate trough regex replacements and apply them to translation
         regex_replaces.each do |replace|
-          raise ArgumentError, "Regex replace #{replace.inspect}" unless replace.length == 2
-          translation.gsub! replace[0], replace[1]
+            raise ArgumentError, "Regex replace #{replace.inspect}" unless replace.length == 2
+            if !translation.nil? && translation.respond_to?(:gsub)
+                translation = translation.gsub replace[0], replace[1]
+            end
         end
 
         segment = Segment.new(key, translation, lang)
